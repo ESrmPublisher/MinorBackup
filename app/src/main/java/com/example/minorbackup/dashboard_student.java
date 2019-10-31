@@ -21,14 +21,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.Button;
 
-public class dashboard extends AppCompatActivity
+public class dashboard_student extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dashboard);
+        setContentView(R.layout.activity_dashboard_student);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -61,7 +61,7 @@ public class dashboard extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.dashboard, menu);
+        getMenuInflater().inflate(R.menu.dashboard_student, menu);
         return true;
     }
 
@@ -89,21 +89,18 @@ public class dashboard extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(dashboard.this,facultyjournal.class);
+            intent= new Intent(this,facultyjournal.class);
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
-            Intent intent = new Intent(dashboard.this,facultyworkshop.class);
+            intent= new Intent(this,facultyworkshop.class);
             startActivity(intent);
         } else if (id == R.id.nav_tools) {
-            Intent intent = new Intent(dashboard.this,fconf.class);
+            intent= new Intent(this,fconf.class);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_student) {
-            Intent intent = new Intent(dashboard.this,StudentListActivity.class);
-            startActivity(intent);
+            intent = new Intent(this,coordinated_events.class);
         } else if (id == R.id.nav_send) {
-            Intent intent = new Intent(dashboard.this,MainActivity.class);
+            intent= new Intent(this,MainActivity.class);
             startActivity(intent);
         }
 

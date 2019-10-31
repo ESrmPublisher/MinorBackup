@@ -16,11 +16,19 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
 
     private Context dContext ;
     private ArrayList<Users> usera ;
-
+    DatabaseReference firebaseDb;
+    Member member = new Member();
     String sname,sregid,susertype,spassword,sdept,syear,ssection,sclassincharge;
 
     public AssignUser(Context dContext, ArrayList<Users> usera) {
@@ -47,6 +55,8 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
         holder.acceptd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                usera.remove(position);
+                notifyItemRemoved(position);
                 Toast.makeText(dContext, user.getRegno()+(" Accepted"),Toast.LENGTH_LONG).show();
             }
         });
@@ -54,7 +64,22 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
         holder.rejectd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // rejectuser();
+                firebaseDb = FirebaseDatabase.getInstance().getReference("Member");
+                Query mquery = firebaseDb.orderByChild("regno").equalTo(user.getRegno());
+                mquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds: dataSnapshot.getChildren()){
+                            ds.getRef().removeValue();
+                        }
+                        Toast.makeText(dContext, user.getRegno()+(" Rejected"),Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

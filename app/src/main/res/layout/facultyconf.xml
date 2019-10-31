@@ -6,7 +6,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -99,7 +99,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         android:fontFamily="monospace"
-        android:text="AFFILIATION DURING THE PERIOD OF ATTENDING THE TRAING"
+        android:text="AFFILIATION DURING THE PERIOD OF ATTENDING THE TRAINING"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="@android:color/black"
         android:textSize="18dp"
@@ -193,7 +193,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/aff"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"

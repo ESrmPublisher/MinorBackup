@@ -21,17 +21,13 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_tools" />
         <item
-            android:id="@+id/nav_student"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Requests" />
-        <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_menu_share"
-            android:title="@string/menu_share" />
+            android:title="Coordinated Events" />
         <item
             android:id="@+id/nav_send"
             android:icon="@drawable/ic_menu_send"
-            android:title="Sign Out" />
+            android:title="Signout" />
     </group>
 
 </menu>
