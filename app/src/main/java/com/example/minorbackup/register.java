@@ -20,9 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class register extends AppCompatActivity {
-    EditText fnameedt,lnameedt,emailedt,regedt,passedt,cpassedt;
+    EditText fnameedt,lnameedt,emailedt,regedt,passedt,cpassedt,role;
     Button submitbtn;
-    DatabaseReference data,dataadmin,datastu;
+    DatabaseReference data;
     FirebaseAuth fauth;
     RadioButton admin,staff,student;
     Member member;
@@ -43,11 +43,28 @@ public class register extends AppCompatActivity {
         admin = findViewById(R.id.admin);
         staff = findViewById(R.id.staff);
         student = findViewById(R.id.student);
+        role = findViewById(R.id.role);
         member = new Member();
-        data = FirebaseDatabase.getInstance().getReference("Member").child("Admin");
-        dataadmin = FirebaseDatabase.getInstance().getReference("Member").child("Staff");
-        datastu = FirebaseDatabase.getInstance().getReference("Member").child("Student");
+        data = FirebaseDatabase.getInstance().getReference("Member");
         fauth = FirebaseAuth.getInstance();
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                role.setText("Admin");
+            }
+        });
+        student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                role.setText("Student");
+            }
+        });
+        staff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                role.setText("Staff");
+            }
+        });
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +74,7 @@ public class register extends AppCompatActivity {
                 final String reg = regedt.getText().toString().trim();
                 final String pass = passedt.getText().toString().trim();
                 final String cpass = cpassedt.getText().toString().trim();
+                final String roles = role.getText().toString().trim();
                 if(TextUtils.isEmpty(fname)){
                     Toast.makeText(register.this,"Enter First Name!!!!",Toast.LENGTH_SHORT).show();
                 }
@@ -87,21 +105,17 @@ public class register extends AppCompatActivity {
                 else if(!cpass.matches(pass)){
                     Toast.makeText(register.this,"Confirm Password does not match Password",Toast.LENGTH_LONG).show();
                 }
+                else if(TextUtils.isEmpty(roles)){
+                    Toast.makeText(register.this,"Choose a Role",Toast.LENGTH_LONG).show();
+                }
                 else {
                 member.setFname(fnameedt.getText().toString().trim());
                 member.setLname(lnameedt.getText().toString().trim());
                 member.setEmailid(emailedt.getText().toString().trim());
                 member.setRegno(regedt.getText().toString().trim());
                 member.setPass(passedt.getText().toString().trim());
-                if(staff.isChecked()) {
-                    data.push().setValue(member);
-                }
-                if(admin.isChecked()) {
-                    dataadmin.push().setValue(member);
-                }
-                if(student.isChecked()) {
-                    datastu.push().setValue(member);
-                }
+                member.setRole(role.getText().toString().trim());
+                data.push().setValue(member);
                 Toast.makeText(register.this,"Data inserted",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(register.this,MainActivity.class);
                 startActivity(intent);

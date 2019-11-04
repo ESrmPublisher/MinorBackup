@@ -88,9 +88,6 @@ public class dashboard_student extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            intent= new Intent(this,facultyjournal.class);
-            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
             intent= new Intent(this,facultyworkshop.class);
             startActivity(intent);
@@ -99,6 +96,7 @@ public class dashboard_student extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_share) {
             intent = new Intent(this,coordinated_events.class);
+            startActivity(intent);
         } else if (id == R.id.nav_send) {
             intent= new Intent(this,MainActivity.class);
             startActivity(intent);

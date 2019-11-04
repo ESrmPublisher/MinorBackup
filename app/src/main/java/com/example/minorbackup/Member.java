@@ -1,6 +1,6 @@
 package com.example.minorbackup;
 public class Member {
-    private String fname,lname,email,reg,pass;
+    private String fname,lname,email,reg,pass,role;
 
     public Member() {
     }
@@ -45,4 +45,11 @@ public class Member {
         this.pass = pass;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

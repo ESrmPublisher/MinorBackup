@@ -48,17 +48,26 @@ public class Users {
     String lname;
     String pass;
     String emailid;
+    String role;
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public Users(){
 
     }
 
-    public Users(String regno, String fname, String lname, String pass, String emailid) {
+    public Users(String regno, String fname, String lname, String pass, String emailid, String role) {
         this.regno = regno;
         this.fname = fname;
         this.lname = lname;
         this.pass = pass;
         this.emailid = emailid;
+        this.role = role;
     }
 }

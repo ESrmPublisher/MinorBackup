@@ -28,7 +28,9 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
     private Context dContext ;
     private ArrayList<Users> usera ;
     DatabaseReference firebaseDb;
+    DatabaseReference databaseReference;
     Member member = new Member();
+    register reg = new register();
     String sname,sregid,susertype,spassword,sdept,syear,ssection,sclassincharge;
 
     public AssignUser(Context dContext, ArrayList<Users> usera) {
@@ -47,17 +49,46 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         final Users user = usera.get(position);
-
+        //holder.role.setText(user.getRole());
         holder.name.setText(user.getFname()+" "+user.getLname());
         holder.regid.setText(user.getRegno());
         holder.usertype.setText(user.getEmailid());
-
         holder.acceptd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usera.remove(position);
-                notifyItemRemoved(position);
-                Toast.makeText(dContext, user.getRegno()+(" Accepted"),Toast.LENGTH_LONG).show();
+                if(user.getRole().equals("Staff")) {
+                    databaseReference = FirebaseDatabase.getInstance().getReference("Accepted Users").child("Staff");
+                    firebaseDb = FirebaseDatabase.getInstance().getReference("Member");
+                }
+                else if(user.getRole().equals("Admin")) {
+                    databaseReference = FirebaseDatabase.getInstance().getReference("Accepted Users").child("Admin");
+                    firebaseDb = FirebaseDatabase.getInstance().getReference("Member");
+                }
+                else if(user.getRole().equals("Student")) {
+                    databaseReference = FirebaseDatabase.getInstance().getReference("Accepted Users").child("Student");
+                    firebaseDb = FirebaseDatabase.getInstance().getReference("Member");
+                }
+                final Query mquery = firebaseDb.orderByChild("regno").equalTo(user.getRegno());
+                mquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds: dataSnapshot.getChildren()){
+                            member.setFname(user.getFname());
+                            member.setLname(user.getLname());
+                            member.setEmailid(user.getEmailid());
+                            member.setRegno(user.getRegno());
+                            member.setPass(user.getPass());
+                            databaseReference.push().setValue(member);
+                            ds.getRef().removeValue();
+                        }
+                        Toast.makeText(dContext, user.getRegno()+(" Accepted"),Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
@@ -99,7 +130,7 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
 
-        TextView name,regid,usertype;
+        TextView name,regid,usertype,role;
         Button acceptd,rejectd;
         CardView cardView ;
         public LinearLayout linearLayout;
@@ -115,6 +146,7 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
             rejectd = (Button) itemView.findViewById(R.id.rejectd);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id_assign);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.mainlinear);
+            //role = itemView.findViewById(R.id.role);
         }
     }
 

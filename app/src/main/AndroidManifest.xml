@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".table"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".table" />
         <activity android:name=".coordinated_events" />
         <activity
             android:name=".dashboard_student"
@@ -19,7 +20,7 @@
             android:name=".dashboard_staff"
             android:label="@string/title_activity_dashboard_staff"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Front">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

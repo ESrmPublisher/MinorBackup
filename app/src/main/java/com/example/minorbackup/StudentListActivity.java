@@ -26,8 +26,7 @@ public class StudentListActivity extends AppCompatActivity {
   // public static List<Users> lstusr;
 
     ArrayList<Users> list;
-
-    DatabaseReference reference;
+    DatabaseReference reference,dbref,dataref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +41,6 @@ public class StudentListActivity extends AppCompatActivity {
     }
 
     private void loadstudentlist() {
-
-
         reference = FirebaseDatabase.getInstance().getReference("Member");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,6 +60,5 @@ public class StudentListActivity extends AppCompatActivity {
                 Toast.makeText(StudentListActivity.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }
