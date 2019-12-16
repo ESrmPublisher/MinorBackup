@@ -54,7 +54,6 @@ public class StudentListActivity extends AppCompatActivity {
                 adapter = new AssignUser(StudentListActivity.this,list);
                 recyclerView.setAdapter(adapter);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(StudentListActivity.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 package com.example.minorbackup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,15 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class adminlogin extends AppCompatActivity {
     Button loginbtn,register;
     EditText username,pass;
     TextView back;
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Member");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Accepted Users").child("Admin");
     DatabaseReference mref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,7 @@ public class adminlogin extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usernam = username.getText().toString().trim();
+                final String usernam = username.getText().toString().trim();
                 String passw = pass.getText().toString().trim();
                 if(TextUtils.isEmpty(usernam))
                 {
@@ -46,8 +49,23 @@ public class adminlogin extends AppCompatActivity {
                     Toast.makeText(adminlogin.this,"Password cannot be empty",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Intent intent = new Intent(adminlogin.this, dashboard.class);
-                    startActivity(intent);
+                    /*Query mquery = databaseReference.orderByChild("emailid").equalTo(users.getEmailid());
+                    mquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for(DataSnapshot ds: dataSnapshot.getChildren()) {
+                                if (usernam.equals(ds.getValue())) {*/
+                                    Intent intent = new Intent(adminlogin.this, dashboard.class);
+                                    startActivity(intent);
+                               /* }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });*/
                 }
             }
         });
