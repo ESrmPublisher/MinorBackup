@@ -2,53 +2,40 @@
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="monospace"
-            android:text="NAME"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:textColor="@android:color/black"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <EditText
             android:id="@+id/fnamedt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="70dp"
             android:ems="10"
             android:fontFamily="monospace"
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
+            android:textSize="32dp"
             android:textStyle="bold"
             android:typeface="sans" />
+
         <TextView
-            android:id="@+id/events"
+            android:id="@+id/title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="monospace"
-            android:text="NAME OF THE EVENT"
+            android:text="CONFERENCE NAME"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/event"
+        <TextView
+            android:id="@+id/confname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -68,45 +55,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="monospace"
-            android:text="NATURE OF TRAINING"
+            android:text="VENUE OF CONFERENCE"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/ntrain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:fontFamily="monospace"
-            android:inputType="textPersonName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="@android:color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:typeface="sans" />
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="monospace"
-            android:text="VENUE OF THE EVENT"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:textColor="@android:color/black"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/ttrain"
+            android:id="@+id/venue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -128,19 +86,19 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:fontFamily="monospace"
-            android:text="DATE"
+            android:text="AFFILIATION DURING THE PERIOD OF ATTENDING THE TRAINING"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/aff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:fontFamily="monospace"
             android:inputType="textPersonName"
@@ -150,23 +108,92 @@
             android:textStyle="bold"
             android:typeface="sans" />
 
-        <Button
-            android:id="@+id/upload"
-            android:layout_width="152dp"
-            android:layout_height="74dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="25dp"
-            android:text="Upload file" />
-
-        <Button
-            android:id="@+id/fsubmit"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="25dp"
-            android:text="submit" />
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:text="CONFERENCE DATE"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/confdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:text="NATIONAL/INTERNATIONAL"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/natint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:text="TITLE OF PAPER"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
 
     </LinearLayout>
 </ScrollView>

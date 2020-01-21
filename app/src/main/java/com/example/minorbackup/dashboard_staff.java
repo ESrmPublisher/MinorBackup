@@ -8,12 +8,19 @@ import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -21,9 +28,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 public class dashboard_staff extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    TextView name,mail;
+    DatabaseReference mref;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,7 @@ public class dashboard_staff extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        updatenav();
     }
 
     @Override
@@ -92,7 +103,7 @@ public class dashboard_staff extends AppCompatActivity
             intent = new Intent(this,facultyjournal.class);
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
-            intent = new Intent(this,facultyworkshop.class);
+            intent = new Intent(this,fworkshop.class);
             startActivity(intent);
         } else if (id == R.id.nav_tools) {
             intent = new Intent(this,fconf.class);
@@ -107,5 +118,34 @@ public class dashboard_staff extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void updatenav(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View view = navigationView.getHeaderView(0);
+        name = view.findViewById(R.id.name);
+        mail = view.findViewById(R.id.textView);
+        mref = FirebaseDatabase.getInstance().getReference("Accepted Users").child("Staff");
+        Bundle bundle = getIntent().getExtras();
+        final String em = bundle.getString("mail");
+        mref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds:dataSnapshot.getChildren()){
+                    String ch = ds.getKey();
+                    String fnam = dataSnapshot.child(ch).child("fname").getValue().toString();
+                    String lnam = dataSnapshot.child(ch).child("lname").getValue().toString();
+                    String email = dataSnapshot.child(ch).child("emailid").getValue().toString();
+                    if(email.equals(em)) {
+                        name.setText(fnam + " " + lnam);
+                        mail.setText(email);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

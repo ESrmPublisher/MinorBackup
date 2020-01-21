@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.AuthResult;
+//import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,7 +23,7 @@ public class register extends AppCompatActivity {
     EditText fnameedt,lnameedt,emailedt,regedt,passedt,cpassedt,role;
     Button submitbtn;
     DatabaseReference data;
-    FirebaseAuth fauth;
+    //FirebaseAuth fauth;
     RadioButton admin,staff,student;
     Member member;
     String npattern = "[a-zA-Z][^#&<>\\\"~;$^%{}?]{1,20}$";
@@ -46,7 +46,7 @@ public class register extends AppCompatActivity {
         role = findViewById(R.id.role);
         member = new Member();
         data = FirebaseDatabase.getInstance().getReference("Member");
-        fauth = FirebaseAuth.getInstance();
+        //fauth = FirebaseAuth.getInstance();
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

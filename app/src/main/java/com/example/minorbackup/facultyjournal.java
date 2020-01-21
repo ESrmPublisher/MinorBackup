@@ -31,7 +31,7 @@ public class facultyjournal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facultyjournal);
-        fnameedt = findViewById(R.id.fnameedt);
+        fnameedt = findViewById(R.id.fnamedt);
         authpos = findViewById(R.id.ntrain);
         coauth = findViewById(R.id.ttrain);
         title = findViewById(R.id.aff);
@@ -42,7 +42,7 @@ public class facultyjournal extends AppCompatActivity {
         submit = findViewById(R.id.work);
         uploadscop = findViewById(R.id.uploadscop);
         fj = new fjourndata();
-        db = FirebaseDatabase.getInstance().getReference("fjourndata");
+        db = FirebaseDatabase.getInstance().getReference("Journal Data");
         str = FirebaseStorage.getInstance().getReference();
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

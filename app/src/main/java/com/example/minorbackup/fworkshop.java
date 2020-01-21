@@ -26,7 +26,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 
-public class facultyworkshop extends AppCompatActivity{
+public class fworkshop extends AppCompatActivity{
     EditText fnameedt,ttrain,aff,fdate,tdate,duration,organization;
     Button upload,fsubmit;
     Spinner ntrain;
@@ -37,10 +37,10 @@ public class facultyworkshop extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facultywork);
-        ArrayAdapter<String> myadap = new ArrayAdapter<String>(facultyworkshop.this,
+        ArrayAdapter<String> myadap = new ArrayAdapter<String>(fworkshop.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.nature));
         myadap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        fnameedt = findViewById(R.id.fnameedt);
+        fnameedt = findViewById(R.id.fnamedt);
         ntrain = findViewById(R.id.ntrain);
         ttrain = findViewById(R.id.ttrain);
         aff = findViewById(R.id.aff);
@@ -51,7 +51,7 @@ public class facultyworkshop extends AppCompatActivity{
         upload = findViewById(R.id.upload);
         fsubmit = findViewById(R.id.fsubmit);
         fw = new fworkdata();
-        db = FirebaseDatabase.getInstance().getReference().child("fworkdata");
+        db = FirebaseDatabase.getInstance().getReference("Workshop Data");
         str = FirebaseStorage.getInstance().getReference();
         ntrain.setAdapter(myadap);
         fsubmit.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +66,7 @@ public class facultyworkshop extends AppCompatActivity{
                 fw.setDuration((duration.getText().toString().trim()));
                 fw.setOrganization(organization.getText().toString().trim());
                 db.push().setValue(fw);
-                Toast.makeText(facultyworkshop.this,"Data inserted",Toast.LENGTH_LONG).show();
+                Toast.makeText(fworkshop.this,"Data inserted",Toast.LENGTH_LONG).show();
             }
         });
         upload.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +76,6 @@ public class facultyworkshop extends AppCompatActivity{
             }
         });
     }
-
     private void selectPDFfile() {
         Intent intent = new Intent();
         intent.setType("application/pdf");
@@ -102,7 +101,7 @@ public class facultyworkshop extends AppCompatActivity{
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(facultyworkshop.this,"Uploaded Successfully!!!!!!!",Toast.LENGTH_SHORT);
+                        Toast.makeText(fworkshop.this,"Uploaded Successfully!!!!!!!",Toast.LENGTH_SHORT);
                         progressDialog.dismiss();
 
                     }

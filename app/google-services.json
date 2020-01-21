@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "241412750570-37pq23l98ff0pfqm2ips213r8usekk1d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.minorbackup",
+            "certificate_hash": "5922faf9837777011a016747169511f83d7b57de"
+          }
+        },
+        {
           "client_id": "241412750570-1uicvtnntbdlai6o6p55nhmgdn1h8o97.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

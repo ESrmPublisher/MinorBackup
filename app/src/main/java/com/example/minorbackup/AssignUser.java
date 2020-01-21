@@ -49,7 +49,6 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         final Users user = usera.get(position);
-        //holder.role.setText(user.getRole());
         holder.name.setText(user.getFname()+" "+user.getLname());
         holder.regid.setText(user.getRegno());
         holder.usertype.setText(user.getEmailid());
@@ -141,12 +140,12 @@ public class AssignUser extends RecyclerView.Adapter<AssignUser.ViewHolder> {
 
             name = (TextView) itemView.findViewById(R.id.name);
             regid = (TextView) itemView.findViewById(R.id.regid);
+            role =itemView.findViewById(R.id.role);
             usertype = (TextView) itemView.findViewById(R.id.usertype);
             acceptd = (Button) itemView.findViewById(R.id.acceptd);
             rejectd = (Button) itemView.findViewById(R.id.rejectd);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id_assign);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.mainlinear);
-            //role = itemView.findViewById(R.id.role);
         }
     }
 

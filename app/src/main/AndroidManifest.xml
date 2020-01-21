@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.minorbackup">
 
     <application
@@ -9,7 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".JournOut"></activity>
+        <activity android:name=".JournList" />
+        <activity android:name=".StaffOptions" />
+        <activity android:name=".ConfList" />
+        <activity android:name=".CordList" />
+        <activity android:name=".WorkList" />
+        <activity android:name=".Conf_Out" />
+        <activity android:name=".Workshop_output" />
+        <activity android:name=".StudentOptions" />
+        <activity android:name=".activity_coordinated_event_output" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".table" />
         <activity android:name=".coordinated_events" />
         <activity
@@ -38,7 +49,13 @@
         <activity android:name=".studentlogin" />
         <activity android:name=".facultyjournal" />
         <activity android:name=".fconf" />
-        <activity android:name=".facultyworkshop" />
+        <activity android:name=".Students_List" />
+        <activity android:name=".Staff_List" />
+        <activity android:name=".fworkshop" />
+
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="true" />
     </application>
 
 </manifest>

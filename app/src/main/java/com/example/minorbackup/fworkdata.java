@@ -4,6 +4,7 @@ public class fworkdata {
     String fnameedt,ntrain,ttrain,aff,fdate,tdate,duration,organization;
 
     public fworkdata() {
+        super();
     }
 
     public String getFnameedt() {
